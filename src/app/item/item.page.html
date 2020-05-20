@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="primary" *ngIf="id">
+          <ion-button  (click)="delete()">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [formGroup]="formItem">
+  <ion-item>
+    <ion-label position="floating">Título:</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad:</ion-label>
+    <ion-input type="number" formControlName="quantity"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Photo:</ion-label>
+    <ion-button  (click)="addPhoto()" slot="end">
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item>
+    <img [src]="dataImg" alt="image" *ngIf="dataImg">
+  </ion-item>
+  <ion-button expand="full" (click)="save()" [disabled]="formItem.invalid">Guardar</ion-button>
+</ion-content>
